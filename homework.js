@@ -86,6 +86,16 @@ let min = undefined;
 //   }
 // }
 
+// function minmum (numberArray){
+//   let smallestNumber = numberArray[0];
+//   for (let number of numberArray){
+//     if (number <= smallestNumber){
+//       smallestNumber = number;
+//     };
+//   };
+//   return smallestNumber;
+// }
+
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
 // implement sorting ourselves, however.
@@ -99,6 +109,34 @@ let min = undefined;
 // Create a function called selectionSort that takes an array of numbers and returns
 // a sorted array using the above technique.
 //
+
+function selectionSort(unsortedArray) {
+	let unsorted = unsortedArray.slice(0);
+	let minNumber = unsorted[0];
+	let indexOfMinNumber = 0;
+	let sorted = [];
+
+	if (unsortedArray.length >= 0 && unsorted.length <= 1) {
+		return unsortedArray;
+	}
+
+	while (sorted.length != unsortedArray.length) {
+    	for (var index = 0; index < unsorted.length; index++) {
+			let number = unsorted[index];
+
+        	if (minNumber > number) { 
+				minNumber = number;
+				indexOfMinNumber = index;
+			}
+        }
+		
+        sorted.unshift(minNumber);
+		unsorted = unsorted.splice(indexOfMinNumber);
+	}
+
+    return sorted;
+}
+
 // Note 1: You do not actually want to delete things from the original array. You
 // should copy it first. To copy an array, use the following code:
 //
@@ -116,3 +154,11 @@ let min = undefined;
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
 
+function textList (string){
+//let newString = []; //naming a new array
+let newString = string.join();
+return newString;
+}
+
+
+//google: how to string elements in an array
