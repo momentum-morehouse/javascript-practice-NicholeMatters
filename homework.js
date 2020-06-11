@@ -7,17 +7,94 @@
 // If the potential member is not in the array, return the array unchanged.
 // If the potential member is in the array, remove all instances of it from the array.
 
+
+function remove (nameArray, newMember){
+let idx = nameArray.indexOf(newMember);
+let newArray = nameArray.filter(name => name !== nameArray[idx]);
+//nameArray.splice(idx, 1);
+console.log(nameArray[idx]);
+return newArray;
+
+
+}
+//[0, 1, 2, 3]
+//nameArray[0]
+
+//const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+//const result = words.filter(word => word.length > 6);
+
+
+
 // 2. Revisit your "remove" function. Make sure that it does not change the original
 // array but instead returns a new array.
 
 // 3. Create a function called "sum" that takes an array of numbers and
 // returns the sum of those numbers.
 
+function sum(array, number){
+  let total = 0;
+  for (let number of array){
+    total = total + number;
+  }
+  return total;
+}
+
 // 4. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
 
+
+function average (array){
+  let total = 0;
+  for (let number of array){
+    total = total + number;
+  }
+  return total/array.length || undefined;
+  
+}
+
+
+
+//can all an previous function sum
+// total + number SAME as += number
+//Solution
+// fucntion average(nums){
+
+//   return sum(nums)/nums.length || undefined;
+// }
+
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
+
+function minimum (array){    
+let min = undefined;
+  for (let number of array){
+    if (min < number || min === number) {
+      min = min;
+    } else {
+    min = number;
+    }
+  }
+  return min;
+}
+
+// return is the last command, define min every step of the way
+// function minimum (numbers) {
+//   if (numbers.length) {
+//   let minimum = numbers.reduce((min, number) => lesser(min, number));
+//   return minimum;
+//   }
+// }
+
+// function minmum (numberArray){
+//   let smallestNumber = numberArray[0];
+//   for (let number of numberArray){
+//     if (number <= smallestNumber){
+//       smallestNumber = number;
+//     };
+//   };
+//   return smallestNumber;
+// }
 
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
@@ -32,6 +109,34 @@
 // Create a function called selectionSort that takes an array of numbers and returns
 // a sorted array using the above technique.
 //
+
+function selectionSort(unsortedArray) {
+	let unsorted = unsortedArray.slice(0);
+	let minNumber = unsorted[0];
+	let indexOfMinNumber = 0;
+	let sorted = [];
+
+	if (unsortedArray.length >= 0 && unsorted.length <= 1) {
+		return unsortedArray;
+	}
+
+	while (sorted.length != unsortedArray.length) {
+    	for (var index = 0; index < unsorted.length; index++) {
+			let number = unsorted[index];
+
+        	if (minNumber > number) { 
+				minNumber = number;
+				indexOfMinNumber = index;
+			}
+        }
+		
+        sorted.unshift(minNumber);
+		unsorted = unsorted.splice(indexOfMinNumber);
+	}
+
+    return sorted;
+}
+
 // Note 1: You do not actually want to delete things from the original array. You
 // should copy it first. To copy an array, use the following code:
 //
@@ -49,3 +154,11 @@
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
 
+function textList (string){
+//let newString = []; //naming a new array
+let newString = string.join();
+return newString;
+}
+
+
+//google: how to string elements in an array
